@@ -8,7 +8,16 @@ public class Market {
     public Market () {
             products = new(){
             new Product("a", "Apple", 0.50m, "Fruits"),
-            new Product("b", "Bread", 1.00m, "Bakery")
+            new Product("b", "Bread", 1.00m, "Bakery"),
+            new Product("c", "Carrot", 0.30m, "Vegetables"),
+            new Product("d", "Milk", 0.99m, "Dairy"),
+            new Product("e", "Eggs", 2.50m, "Dairy"),
+            new Product("f", "Flour", 1.20m, "Bakery"),
+            new Product("g", "Grapes", 2.00m, "Fruits"),
+            new Product("h", "Honey", 3.50m, "Sweeteners"),
+            new Product("i", "Ice Cream", 4.00m, "Frozen Foods"),
+            new Product("j", "Juice", 1.50m, "Beverages"),
+            new Product("k", "Ketchup", 1.75m, "Condiments")    
         };
     }
 
@@ -33,43 +42,27 @@ public class Market {
         return null; 
     }
 
-    public List<Product> selectQuantity(Product product){
-        
-        if (product == null) return new List<Product>();
-        
-        System.Console.WriteLine("enter quantity");
-        if (int.TryParse(Console.ReadLine(), out int quan))
-        {
-            List<Product> amount = new();
-            for (int i = 0; i < quan; i++)
-            {
-                amount.Add(product);
-            }
-            return amount;
-            
-        } else {
-            return new List<Product>();
-        }
-        
-    }
 
     public List<Product> goToCart(){
         string input;
         List<Product> productsInCart = new();
         do
         {
-            productsInCart.AddRange(selectQuantity(selectItem()));
-            System.Console.WriteLine("Enter 0 to exit");
+            Product product = selectItem();
+            Product product1 = new(product.Ean, product.Name, product.Price, product.Category);
+            productsInCart.Add(product1);
+            Console.WriteLine("Enter 0 to exit");
             input = Console.ReadLine();
         } while (input != "0");
 
-        displayCart(products);
+        displayCart(productsInCart);
         return productsInCart;
     }
 
     public void displayCart(List<Product> products){
+        Console.WriteLine("Your product list is: ");
         foreach (Product product in products){
-            System.Console.WriteLine(product);
+            Console.WriteLine(product);
         }
     }
 }
