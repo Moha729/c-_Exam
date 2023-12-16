@@ -4,8 +4,9 @@ public class Program {
 
     public static void Main(string[] args){
 
-        Product apple = new("aa", "apple", 2.75f);
+        System.Console.WriteLine("Welcome");
 
-        apple.DisplayInfo();
+        Market market = new();
+        market.goToCart();
     }
 }

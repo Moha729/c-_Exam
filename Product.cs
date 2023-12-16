@@ -1,23 +1,24 @@
 
-public class Product {
+using System;
 
-    public string Name {get; set;}
-    public string EAN {get; set;}
+public class Product{
 
-    public float Price {get; set;}
+    public string Ean { set; get;}
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public string Category { get; set; }
 
 
-    public Product (string ean, string name, float price){
+    public Product(string ean, string name, decimal price, string category)
+    {
+        Ean = ean;
         Name = name;
         Price = price;
-        EAN = ean;
+        Category = category;
     }
 
-    public void DisplayInfo(){
-        Console.WriteLine(toString());
-    }
-
-    public string toString(){
-        return ($"EAN: {EAN}, Name: {Name}, Price: {Price} $");
+    public override string ToString()
+    {
+        return $"Product Ean: {Ean}, Name: {Name}, Price: {Price}, Category: {Category}";
     }
 }
